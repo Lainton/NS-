@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import datetime
+import sys
 import matplotlib.pyplot as plt
 
 #数据文件保存位置
@@ -29,12 +30,34 @@ def writeToCSV(lineData):
         return False
 
 
-def updateCSV():
-    """获取数据并更新记录"""
-    data = input("输入d10,d15,d20,d25,d35,d45,d50\n")
+def cleanSpace(s):
+    """将多个空格变为1个"""
+    return ' '.join(s.split())
+
+
+def inputToCSVFormat(data: str):
+    #空格转逗号
+    if data.find(' '):
+        #清洗空格
+        data = cleanSpace(data)
+        #替换空格为逗号
+        data = data.replace(' ', ',')
+    
+    #生成日期
     date = datetime.date.today()
     data = '\n' + date.__str__() + ',' + data
-    writeToCSV(data)
+    return data
+
+
+def appendToCSV():
+    """获取数据并更新记录"""
+    data = input("输入d10 d15 d20 d25 d35 d45 d50\n")
+    data = inputToCSVFormat(data)
+
+    if writeToCSV(data):
+        print("[+]写入文件成功")
+    else:
+        print("[!!!]写入文件失败\n[!]输入的数据:{}".format(data))
 
 
 def dnumberMatrix(l, s, t):
@@ -87,13 +110,13 @@ def draw(df):
 
 def command(str):
     if str == 'i':
-        updateCSV() 
+        appendToCSV() 
     elif str == 'p':
         data = readFromCSV(data_file_path)
         data = getD2Rrate(data)
         draw(data)
     elif str == 'q':
-        exit()
+        sys.exit()
     else:
         return
     
