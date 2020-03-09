@@ -5,7 +5,7 @@ import sys
 import matplotlib.pyplot as plt
 
 #数据文件保存位置
-data_file_path = '/Users/ansel/Documents/matlabFile/rmbData'
+data_file_path = '/Users/ansel/PycharmProjects/taobaoNS/rmbData'
 #读取的数据列
 col = ['d10','d15','d20','d25','d35','d45','d50']
 
