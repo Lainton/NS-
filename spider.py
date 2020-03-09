@@ -77,7 +77,7 @@ def drawBar(dfbar):
     ax = dfbar.plot.bar()
     for p in ax.patches:
         val = "{:.2f}".format(p.get_height())
-        ax.annotate(val, (p.get_x() * 1.005, p.get_height()+0.2), rotation=70)
+        ax.annotate(val, (p.get_x()+p.get_width()/2.5, p.get_height()+0.2), rotation=80, fontsize=9)
 
     # 设置画
     plt.xlabel('date')  #x轴说明
@@ -89,14 +89,17 @@ def drawBar(dfbar):
 
 def drawLine(dfbar):
     #线条图
-    ax = dfbar.plot(figsize=(5,6), grid=True)
+    ax = dfbar.plot(figsize=(8,6), grid=True)
 
     # 设置画
     plt.xlabel('date')  #x轴说明
     plt.ylabel('RMB')   #y轴说明
     plt.xticks(rotation=70, fontsize=6) #x轴刻度旋转70°
-    # plt.yticks(np.arange(6, 8,0.2))
-    plt.legend(loc='center left', bbox_to_anchor=(1, 0.5))
+
+
+    #第一个参数是位置, 第二个参数微调 (x, y)  范围是[0, 1]
+    plt.legend(loc='left', bbox_to_anchor=(1, 0.5))
+    # plt.legend(loc='right')
 
     #绘图
     plt.show()  
