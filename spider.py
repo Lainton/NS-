@@ -98,8 +98,7 @@ def drawLine(dfbar):
 
 
     #第一个参数是位置, 第二个参数微调 (x, y)  范围是[0, 1]
-    plt.legend(loc='left', bbox_to_anchor=(1, 0.5))
-    # plt.legend(loc='right')
+    plt.legend(loc='best', bbox_to_anchor=(1, 0.5))
 
     #绘图
     plt.show()  
