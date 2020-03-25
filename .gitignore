@@ -1,2 +1,7 @@
 .vscode/sftp.json
 rmbData
+taobao/cookies.json
+taobao/taobaoLogin.py
+taobao/taobaoSpider.py
+taobao/error.png
+geckodriver.log
